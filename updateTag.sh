@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# echo $# < 0
+# 用法： eg: ./updateTag v1.0.0
 if [[ $# < 1 ]]; then
     echo "Usage: UpdateJS.sh <tagname>"
     exit 1
@@ -20,7 +20,7 @@ else
     echo "remote don't have tag $1"
 fi
 
-
+# 如果本地有这个分支，则删掉
 if [[ `git tag | grep -o $1` ]]; then
     #statements
     echo "local have tag $1"
@@ -30,6 +30,7 @@ else
     echo "local don't have tag $1"
 fi
 
+# 同步代码
 echo "sync code..."
 git fetch
 
